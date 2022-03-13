@@ -5,6 +5,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
     <meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
+    <link rel='icon' type='image/png' sizes='32x32'>
+    <link rel='icon' type='image/png' sizes='96x96'>
+    <link rel='stylesheet' href='css/common.css'>
 
     <title>Hit Test</title>
 </head>
@@ -19,7 +22,14 @@
     </details>
 </header>
 <script type="module">
-
+    import {WebXRButton} from 'util/webxr-button.js';
+    import {Scene} from 'render/scenes/scene.js';
+    import {Renderer, createWebGLContext} from 'render/core/renderer.js';
+    import {Node} from 'render/core/node.js';
+    import {Gltf2Node} from 'render/nodes/gltf2.js';
+    import {DropShadowNode} from 'render/nodes/drop-shadow.js';
+    import {vec3} from 'render/math/gl-matrix.js';
+    import {Ray} from 'render/math/ray.js';
 
     // XR globals.
     let xrButton = null;
