@@ -1,12 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+Copyright 2018 The Immersive Web Community Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
 <html>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
     <meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
-    <link rel='icon' type='image/png' sizes='32x32'>
-    <link rel='icon' type='image/png' sizes='96x96'>
+    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png'>
+    <link rel='icon' type='image/png' sizes='96x96' href='favicon-96x96.png'>
     <link rel='stylesheet' href='css/common.css'>
 
     <title>Hit Test</title>
@@ -14,7 +34,7 @@
 <body>
 <header>
     <details open>
-        <summary>Hit Testddd</summary>
+        <summary>Hit Test</summary>
         <p>
             This sample demonstrates the use of hit testing to place virtual objects on real-world surfaces.
             <a class="back" href="./">Back</a>
@@ -22,14 +42,14 @@
     </details>
 </header>
 <script type="module">
-    import {WebXRButton} from 'util/webxr-button.js';
-    import {Scene} from 'render/scenes/scene.js';
-    import {Renderer, createWebGLContext} from 'render/core/renderer.js';
-    import {Node} from 'render/core/node.js';
-    import {Gltf2Node} from 'render/nodes/gltf2.js';
-    import {DropShadowNode} from 'render/nodes/drop-shadow.js';
-    import {vec3} from 'render/math/gl-matrix.js';
-    import {Ray} from 'render/math/ray.js';
+    import {WebXRButton} from './js/util/webxr-button.js';
+    import {Scene} from './js/render/scenes/scene.js';
+    import {Renderer, createWebGLContext} from './js/render/core/renderer.js';
+    import {Node} from './js/render/core/node.js';
+    import {Gltf2Node} from './js/render/nodes/gltf2.js';
+    import {DropShadowNode} from './js/render/nodes/drop-shadow.js';
+    import {vec3} from './js/render/math/gl-matrix.js';
+    import {Ray} from './js/render/math/ray.js';
 
     // XR globals.
     let xrButton = null;
@@ -47,10 +67,10 @@
     arObject.visible = false;
     scene.addNode(arObject);
 
-    let flower = new Gltf2Node({url: 'sunflower/sunflower.gltf'});
+    let flower = new Gltf2Node({url: 'media/gltf/sunflower/sunflower.gltf'});
     arObject.addNode(flower);
 
-    let reticle = new Gltf2Node({url: 'reticle/reticle.gltf'});
+    let reticle = new Gltf2Node({url: 'media/gltf/reticle/reticle.gltf'});
     reticle.visible = false;
     scene.addNode(reticle);
 
@@ -82,7 +102,6 @@
                     xrButton.enabled = supported;
                 });
         }
-        xrButton.enable()
     }
 
     function onRequestSession() {
