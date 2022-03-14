@@ -87,7 +87,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     scene.clear = false;
 
     function initXR() {
-        onRequestSession()
+        xrButton = new WebXRButton({
+            onRequestSession: onRequestSession,
+            onEndSession: onEndSession,
+            textEnterXRTitle: "START AR",
+            textXRNotFoundTitle: "AR NOT FOUND",
+            textExitXRTitle: "EXIT  AR",
+        });
+        document.querySelector('header').appendChild(xrButton.domElement);
+
+        if (navigator.xr) {
+            navigator.xr.isSessionSupported('immersive-ar')
+                .then((supported) => {
+                    xrButton.enabled = supported;
+                });
+        }
     }
 
     function onRequestSession() {
