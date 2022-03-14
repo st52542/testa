@@ -42,12 +42,14 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </details>
 </header>
 <script type="module">
-    import {Scene} from './render/scenes/scene.js';
-    import {Renderer, createWebGLContext} from './render/core/renderer.js';
-    import {Node} from './render/core/node.js';
-    import {Gltf2Node} from './render/nodes/gltf2.js';
-    import {DropShadowNode} from './render/nodes/drop-shadow.js';
-    import {vec3} from './render/math/gl-matrix.js';
+    import {WebXRButton} from './util/webxr-button.js';
+    import {Scene} from './js/render/scenes/scene.js';
+    import {Renderer, createWebGLContext} from './js/render/core/renderer.js';
+    import {Node} from './js/render/core/node.js';
+    import {Gltf2Node} from './js/render/nodes/gltf2.js';
+    import {DropShadowNode} from './js/render/nodes/drop-shadow.js';
+    import {vec3} from './js/render/math/gl-matrix.js';
+    import {Ray} from './js/render/math/ray.js';
 
     // XR globals.
     let xrButton = null;
@@ -85,7 +87,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     scene.clear = false;
 
     function initXR() {
-        onRequestSession()
+        xrButton = new WebXRButton({
+            onRequestSession: onRequestSession,
+            onEndSession: onEndSession,
+            textEnterXRTitle: "START AR",
+            textXRNotFoundTitle: "AR NOT FOUND",
+            textExitXRTitle: "EXIT  AR",
+        });
+        document.querySelector('header').appendChild(xrButton.domElement);
+
+        if (navigator.xr) {
+            navigator.xr.isSessionSupported('immersive-ar')
+                .then((supported) => {
+                    xrButton.enabled = supported;
+                });
+        }
     }
 
     function onRequestSession() {
