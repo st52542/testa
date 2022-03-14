@@ -85,11 +85,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     scene.clear = false;
 
     function initXR() {
-        return navigator.xr.requestSession('immersive-ar', {requiredFeatures: ['local', 'hit-test']})
-            .then((session) => {
-                xrButton.setSession(session);
-                onSessionStarted(session);
-            });
+        onRequestSession()
     }
 
     function onRequestSession() {
