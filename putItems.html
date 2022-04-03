@@ -116,6 +116,10 @@
         });
     }
 
+    function onSessionEnded(event) {
+        xrButton.setSession(null);
+    }
+
     // Adds a new object to the scene at the
     // specified transform.
     function addARObjectAt(matrix) {
