@@ -56,9 +56,6 @@
     vec3.set(shadow.scale, 0.15, 0.15, 0.15);
     arObject.addNode(shadow);
 
-    const MAX_FLOWERS = 30;
-    let flowers = [];
-
     // Ensure the background is transparent for AR.
     scene.clear = false;
 
@@ -119,10 +116,6 @@
         });
     }
 
-    function onSessionEnded(event) {
-        xrButton.setSession(null);
-    }
-
     // Adds a new object to the scene at the
     // specified transform.
     function addARObjectAt(matrix) {
@@ -130,16 +123,6 @@
         newFlower.visible = true;
         newFlower.matrix = matrix;
         scene.addNode(newFlower);
-
-        flowers.push(newFlower);
-
-        // For performance reasons if we add too many objects start
-        // removing the oldest ones to keep the scene complexity
-        // from growing too much.
-        if (flowers.length > MAX_FLOWERS) {
-            let oldFlower = flowers.shift();
-            scene.removeNode(oldFlower);
-        }
     }
 
     let rayOrigin = vec3.create();
