@@ -24,8 +24,6 @@
     import {Renderer, createWebGLContext} from './js/render/core/renderer.js';
     import {Node} from './js/render/core/node.js';
     import {Gltf2Node} from './js/render/nodes/gltf2.js';
-    import {DropShadowNode} from './js/render/nodes/drop-shadow.js';
-    import {vec3} from './js/render/math/gl-matrix.js';
 
     // XR globals.
     let xrButton = null;
@@ -43,18 +41,12 @@
     arObject.visible = false;
     scene.addNode(arObject);
 
-    let flower = new Gltf2Node({url: 'modely/viol/scene.gltf'});
+    let flower = new Gltf2Node({url: 'modely/sunflower/sunflower.gltf'});
     arObject.addNode(flower);
 
     let reticle = new Gltf2Node({url: 'modely/reticle/reticle.gltf'});
     reticle.visible = false;
     scene.addNode(reticle);
-
-    // Having a really simple drop shadow underneath an object helps ground
-    // it in the world without adding much complexity.
-    let shadow = new DropShadowNode();
-    vec3.set(shadow.scale, 0.15, 0.15, 0.15);
-    arObject.addNode(shadow);
 
     // Ensure the background is transparent for AR.
     scene.clear = false;
@@ -129,8 +121,6 @@
         scene.addNode(newFlower);
     }
 
-    let rayOrigin = vec3.create();
-    let rayDirection = vec3.create();
     function onSelect(event) {
         if (reticle.visible) {
             // The reticle should already be positioned at the latest hit point,
