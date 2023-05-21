@@ -8,17 +8,82 @@
         {
             "name" : "Scene",
             "nodes" : [
-                0
+                0,
+                1,
+                2,
+                3,
+                4
             ]
         }
     ],
     "nodes" : [
         {
-            "mesh" : 0,
-            "name" : "Asset3DLoader.sceneRoot",
+            "name" : "Camera.001",
+            "rotation" : [
+                0.483536034822464,
+                0.33687159419059753,
+                -0.20870360732078552,
+                0.7804827094078064
+            ],
+            "translation" : [
+                7.481131553649902,
+                5.34366512298584,
+                6.5076398849487305
+            ]
+        },
+        {
+            "name" : "Lamp",
+            "rotation" : [
+                0.16907551884651184,
+                0.7558804750442505,
+                -0.2721710503101349,
+                0.5709475874900818
+            ],
             "translation" : [
                 0,
-                25.90616798400879,
+                1.600000023841858,
+                0
+            ]
+        },
+        {
+            "name" : "Light.001",
+            "rotation" : [
+                0.16907575726509094,
+                0.7558803558349609,
+                -0.27217137813568115,
+                0.570947527885437
+            ],
+            "translation" : [
+                4.076245307922363,
+                5.903861999511719,
+                -1.0054539442062378
+            ]
+        },
+        {
+            "name" : "Camera.002",
+            "rotation" : [
+                0.483536034822464,
+                0.33687159419059753,
+                -0.20870360732078552,
+                0.7804827094078064
+            ],
+            "translation" : [
+                7.358891487121582,
+                4.958309173583984,
+                6.925790786743164
+            ]
+        },
+        {
+            "mesh" : 0,
+            "name" : "testObject",
+            "scale" : [
+                0.017202019691467285,
+                0.017202019691467285,
+                0.017202019691467285
+            ],
+            "translation" : [
+                0,
+                0.42480435967445374,
                 0
             ]
         }
@@ -26,8 +91,14 @@
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Material_0",
-            "pbrMetallicRoughness" : {}
+            "name" : "Materi\u00e1l.001",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
         }
     ],
     "meshes" : [
@@ -44,6 +115,19 @@
                     "material" : 0
                 }
             ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "test.png.001",
+            "uri" : "test.png"
         }
     ],
     "accessors" : [
@@ -102,6 +186,12 @@
             "buffer" : 0,
             "byteLength" : 2652,
             "byteOffset" : 42432
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
         }
     ],
     "buffers" : [
